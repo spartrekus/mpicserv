@@ -1,0 +1,18 @@
+
+
+
+function! NetcatImage()
+      let line = getline(".")
+      let output=split(line, "{")[1]
+      let outputtwo=split(output, "}")[0]
+      let opt = "" 
+      let arg3 = '"'
+      let arg1 = outputtwo 
+      silent execute '!' .  ' echo  ' . outputtwo .   '  | netcat 192.168.51.14 8888  & '  
+      :redraw!
+      :tabn
+      :tabp
+      :redraw!
+      :redraw!
+endfunc
+map O :call NetcatImage()<cr>
